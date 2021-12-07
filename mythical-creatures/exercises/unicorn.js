@@ -1,22 +1,14 @@
 class Unicorn {
-  constructor(name, color) {
-    this.name = name;
-    this.color = color;
-    if (color === undefined) {
-      this.color = "white";
-    } else {
-      this.color = color;
-    }
+  constructor(name,color) {
+  this.name = name;
+  this.color = color || "white";
   }
 
   isWhite() {
-    if (this.color !== "white") {
-      return false;
-    }
+    return false
   }
-
   says(message) {
-    return "**;* " + message + " *;**";
+    return `**;* ${message} *;**`
   }
 }
 
