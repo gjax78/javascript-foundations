@@ -20,7 +20,7 @@ class Hobbit {
 
   getRing() {
     if (this.name === "Frodo") {
-    this.hasRing === true
+    this.hasRing = true
       return 'Here is the ring!';
   } else {
     this.hasRing = false
