@@ -4,38 +4,39 @@ class Centaur {
     this.breed = centaur.type
     this.cranky = false
     this.standing = true
-    this.count = 0
+    this.counter = 0
     this.layingDown = false
   }
 
   shootBow() {
-    if (this.cranky || this.layingDown) {
+    this.counter++
+    if (this.counter >= 3 && this.cranky) {
       return 'NO!'
-    } else {
-      this.activityCount += 1
-      if (this.activityCount = 3) {
-      this.cranky = true;
+    } else if (this.layingDown) {
+      return 'NO!'
+    } else if (this.counter === 3) {
+      this.cranky = true
     }
-      return 'Twang!!!'
-    }
+    return 'Twang!!!'
   }
 
   run() {
-    if (this.cranky|| this.layingDown) {
+    this.counter++
+    if (this.counter > 3 && this.cranky) {
       return 'NO!'
-    } else {
-      this.activityCount += 1
-      if (this.activityCount = 3) {
-        this.cranky = true;
+    } else if (this.layingDown) {
+      return 'NO!'
+    } else if (this.counter === 3) {
+      this.cranky = true
     }
-      return 'Clop clop clop clop!!!'
-    }
+    return 'Clop clop clop clop!!!'
   }
 
   sleep() {
     if (this.standing) {
       return 'NO!'
-    } else {
+    }
+    if (this.layingDown) {
       this.cranky = false
       return 'ZZZZ'
     }
@@ -47,19 +48,16 @@ class Centaur {
   }
 
   standUp() {
-    this.layingDown = false
     this.standing = true
+    this.layingDown = false
   }
 
   drinkPotion() {
-    if (this.standing) {
     this.cranky = false
-  } else {
-    return 'Not while I\'m laying down!'
+    if (this.layingDown) {
+      return 'Not while I\'m laying down!'
     }
   }
 }
 
-
-
-module.exports = Centaur;
+module.exports = Centaur
